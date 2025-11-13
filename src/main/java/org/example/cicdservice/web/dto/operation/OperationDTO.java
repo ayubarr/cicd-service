@@ -4,6 +4,8 @@ package org.example.cicdservice.web.dto.operation;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
+import org.example.cicdservice.util.PipelineOperationType;
+
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -11,11 +13,11 @@ import lombok.Data;
         property = "type"
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = GradleOperationDTO.class, name = "gradle"),
-        @JsonSubTypes.Type(value = ScriptOperationDTO.class, name = "script"),
-        @JsonSubTypes.Type(value = UploadOperationDTO.class, name = "upload")
+        @JsonSubTypes.Type(value = GradleOperationDTO.class, name = "GRADLE"),
+        @JsonSubTypes.Type(value = ScriptOperationDTO.class, name = "SCRIPT"),
+        @JsonSubTypes.Type(value = UploadOperationDTO.class, name = "UPLOAD")
 })
 @Data
 public class OperationDTO {
-    private String type;
+    private PipelineOperationType type;
 }

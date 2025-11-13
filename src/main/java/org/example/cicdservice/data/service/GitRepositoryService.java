@@ -31,6 +31,7 @@ public class GitRepositoryService {
         Path repositoryPath = gitRepositoriesPath.resolve(RepositoryUtility.extractRepoName(repoUrl));
         DirectoryUtility.deleteDirectory(repositoryPath.toFile());
         Files.createDirectories(repositoryPath);
+        //TODO: Выдать права для директории, потому что в Linux всё ломается
 
         log.info("Downloading repository from {}", repoUrl);
         Git git = Git.cloneRepository()

@@ -20,7 +20,7 @@ public class PipelineController {
     private final PipelineService pipelineService;
 
     @PostMapping("/api/pipeline/execute")
-    public void executePipeline(@RequestBody PipelineExecuteRequestDTO body) throws GitAPIException, IOException, IncorrectPipelineConfigException {
+    public void executePipeline(@RequestBody PipelineExecuteRequestDTO body) throws GitAPIException, IOException, IncorrectPipelineConfigException, InterruptedException {
         pipelineService.executeIfBranchPipelineExist(body.getRepositoryUrl(), body.getBranch());
     }
 }
